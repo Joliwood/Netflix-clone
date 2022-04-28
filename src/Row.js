@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "./axios";
+import "./Row.css";
 
 function Row({ title, fetchUrl }) {
   const[movies, setMovies] = useState([]);
@@ -21,7 +22,11 @@ function Row({ title, fetchUrl }) {
         <div className="row__posters">
           {/* container -> posters */}
           {movies.map(movie => (
-            <img src={`${base_url}${movie.poster_path}`} alt={movie.name} />
+            <img
+              key={movie.id}
+              className="row__poster" 
+              src={`${base_url}${movie.poster_path}`} alt={movie.name} 
+            />
           ))}
         </div>
     </div>

@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from "./axios";
 import "./Row.css";
-import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+import ReactPlayer from 'react-player';
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function Row({ title, fetchUrl, isLargeRow }) {
-  const[movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,23 +20,17 @@ function Row({ title, fetchUrl, isLargeRow }) {
     fetchData();
   }, [fetchUrl]);
 
-  const opts = {
-    height: "390",
-    width: "100%",
-    playerVar: {
-      autoplay: 0,
-      origin: "http://localhost:3000",
-    },
-  };
-
 const handleClick = (movie) => {
   if (trailerUrl) {
     setTrailerUrl("");
+    setIsOpen(false);
   } else {
-    movieTrailer(movie?.name || "")
+    movieTrailer(movie?.title || movie?.name || movie?.original_name)
     .then((url) => {
       const urlParams = new URLSearchParams(new URL(url).search);
+      console.log(urlParams);
       setTrailerUrl(urlParams.get("v"));
+      setIsOpen(true);
     })
     .catch((error) => console.log(error));
   }
@@ -46,7 +41,7 @@ const handleClick = (movie) => {
         <h2>{title}</h2>
 
         <div className="row__posters">
-          {movies.map(movie => (
+          {movies.map((movie) => (
             <img
               key={movie.id}
               onClick={() => handleClick(movie)}
@@ -56,11 +51,20 @@ const handleClick = (movie) => {
             />
           ))}
         </div>
-        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
-
-        
+        {isOpen && trailerUrl && 
+          <ReactPlayer 
+            playing url={`https://www.youtube.com/watch?v=${trailerUrl}`} 
+            height="480px"
+            width="98.5%"
+          />}
     </div>
-  )
+    
+  );
+
 };
+
+// https://www.youtube.com/watch?v=rpIuoxMSFeQ
+// https://youtu.be/rpIuoxMSFeQ
+// Donc on voit bien que l'ID, c'est rpIuoxMSFeQ
 
 export default Row;

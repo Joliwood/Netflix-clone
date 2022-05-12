@@ -8,10 +8,12 @@
     "@testing-library/user-event": "^13.5.0",
     "@u-wave/react-youtube": "^0.7.4",
     "axios": "^0.26.1",
+    "express": "^4.18.1",
     "http-server": "^14.1.0",
     "movie-trailer": "^2.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-player": "^2.10.1",
     "react-scripts": "5.0.1",
     "react-youtube": "^9.0.1",
     "web-vitals": "^2.1.4"

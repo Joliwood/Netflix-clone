@@ -3,7 +3,7 @@
     display: flex;
     object-fit: contain;
     top: 0;
-    width: 96%;
+    width: 100%;
     justify-content: space-between;
     padding: 20px;
     height: 30px;
@@ -23,4 +23,6 @@
 .nav__avatar {
     width: 30px;
     object-fit: contain;
+    right: 20px;
+    position: fixed;
 }

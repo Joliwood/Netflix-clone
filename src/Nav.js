@@ -26,7 +26,7 @@ function Nav() {
         <img 
             className="nav__avatar"
             src="https://upload.wikimedia.org/wikipedia/commons/7/7e/VisualEditor_icon_profile-progressive.svg"
-            alt="Netflix avatar picture"
+            alt="Netflix avatar"
         />
     </div>
   )

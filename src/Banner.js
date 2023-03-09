@@ -66,7 +66,6 @@ function Banner() {
             onClick={() => {
               handleClick(movie);
               setIsOpen(true);
-              console.log(isOpen);
             }}
           >
             Play

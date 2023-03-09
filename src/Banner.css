@@ -1,57 +1,96 @@
 .banner {
-    color: white;
-    object-fit: contain;
-    height: 448px;
+  color: white;
+  object-fit: contain;
+  height: 448px;
 }
 
 .banner__contents {
-    margin-left: 30px;
-    padding-top: 140px;
-    height: 190px;
+  margin-left: 30px;
+  padding-top: 140px;
+  height: 190px;
 }
 
 .banner__title {
-    font-size: 3rem;
-    font-weight: 800;
-    padding-bottom: 0.3rem;
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.3rem;
 }
 
 .banner__description {
-    width: 45rem;
-    line-height: 1.3;
-    padding-top: 1rem;
-    font-size: 0.8rem;
-    max-width: 360px;
-    height: 80px;
+  width: 45rem;
+  line-height: 1.3;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  max-width: 360px;
+  height: 80px;
 }
 
 .banner__button {
-    cursor: pointer;
-    color: white;
-    outline: none;
-    border: none;
-    font-weight: 700;
-    border-radius: 0.2vw;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin-right: 1rem;
-    padding-top: 0.5rem;
-    background-color: rgba(51, 51, 51, 0.5);
-    padding-bottom: 0.5rem;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
 }
 
 .banner__button:hover {
-    color: black;
-    background-color: white;
-    transition: all 0.2s;
+  color: black;
+  background-color: white;
+  transition: all 0.2s;
 }
 
 .banner--fadeBottom {
-    height: 7.5rem;
-    background-image: linear-gradient(
-        180deg,
-        transparent,
-        rgba(37, 37, 37, 0.61),
-        #111
-    );
+  height: 7.5rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+}
+
+.trailerMainOverview {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  top: 100px;
+  gap: 10px;
+  z-index: 2;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Black with 50% opacity */
+  display: none;
+  z-index: 1;
+}
+
+.trailerMainOverview > button {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.trailerMainOverview > div {
+  width: 100%;
+}
+
+@media screen and (max-width: 769px) {
+  .trailerMainOverview {
+    margin: 0;
+    width: 100vw;
+  }
 }

@@ -63,7 +63,9 @@
   width: 80vw;
   margin-left: 10vw;
   margin-right: 10vw;
+  padding-bottom: 41px;
   top: 100px;
+  bottom: 100px;
   gap: 10px;
   z-index: 2;
 }
@@ -88,9 +90,22 @@
   width: 100%;
 }
 
+.mainReactPlayer {
+  height: 100%;
+  width: 100%;
+}
+
 @media screen and (max-width: 769px) {
   .trailerMainOverview {
     margin: 0;
     width: 100vw;
+  }
+}
+
+@media screen and (max-height: 570px) {
+  .trailerMainOverview {
+    top: 10px;
+    bottom: 10px;
+    padding-bottom: 0;
   }
 }

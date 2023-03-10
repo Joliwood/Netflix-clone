@@ -90,12 +90,14 @@ function Banner() {
           >
             Close the trailer
           </button>
-          <ReactPlayer
-            playing
-            url={`https://www.youtube.com/watch?v=${trailerUrl}`}
-            height="480px"
-            width="100%"
-          />
+          <span className="mainReactPlayer">
+            <ReactPlayer
+              playing
+              url={`https://www.youtube.com/watch?v=${trailerUrl}`}
+              width="100%"
+              height="100%"
+            />
+          </span>
         </div>
       )}
       {/* )} */}

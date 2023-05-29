@@ -4,10 +4,11 @@ import requests from "./requests";
 import "./Banner.css";
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
+import { connect } from "react-redux";
 
 const posterUrl = "https://image.tmdb.org/t/p/original/";
 
-function Banner() {
+const Banner = ({ count }) => {
   const [movie, setMovie] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -71,6 +72,9 @@ function Banner() {
             Play
           </button>
           <button className="banner__button">My List</button>
+          <button className="banner__button">
+            Films ajoutés à la liste : {count}
+          </button>
         </div>
 
         <h1 className="banner__description">
@@ -103,6 +107,10 @@ function Banner() {
       {/* )} */}
     </header>
   );
-}
+};
 
-export default Banner;
+const mapStateToProps = (state) => ({
+  count: state.count,
+});
+
+export default connect(mapStateToProps)(Banner);

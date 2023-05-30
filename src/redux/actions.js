@@ -1,7 +1,8 @@
 // Action types
-export const INCREMENT = "INCREMENT";
+export const ADD_FILM = "ADD_FILM";
 
 // Action creators
-export const increment = () => ({
-  type: INCREMENT,
+export const addFilm = (item) => ({
+  type: ADD_FILM,
+  payload: item,
 });

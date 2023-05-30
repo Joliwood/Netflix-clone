@@ -3,12 +3,12 @@ import axios from "./axios";
 import "./Row.css";
 import movieTrailer from "movie-trailer";
 import ReactPlayer from "react-player";
-import { increment } from "./redux/actions";
+import { addFilm } from "./redux/actions";
 import { connect } from "react-redux";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-const Row = ({ title, fetchUrl, isLargeRow, increment }) => {
+const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +38,10 @@ const Row = ({ title, fetchUrl, isLargeRow, increment }) => {
     }
   };
 
+  const handleAddFilm = (movie) => {
+    addFilm(movie.title);
+  };
+
   return (
     <div className="row">
       <h2>{title}</h2>
@@ -60,7 +64,10 @@ const Row = ({ title, fetchUrl, isLargeRow, increment }) => {
               }`}
               alt={movie.name}
             />
-            <button onClick={increment} className="row__addList">
+            <button
+              onClick={() => handleAddFilm(movie)}
+              className="row__addList"
+            >
               <img
                 src="https://www.svgrepo.com/show/366540/add.svg"
                 alt="add to the list svg"
@@ -82,11 +89,11 @@ const Row = ({ title, fetchUrl, isLargeRow, increment }) => {
 };
 
 const mapStateToProps = (state) => ({
-  count: state.count,
+  filmsList: state.filmsList,
 });
 
 const mapDispatchToProps = {
-  increment,
+  addFilm,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Row);

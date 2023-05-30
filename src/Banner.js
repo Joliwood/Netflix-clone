@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 const posterUrl = "https://image.tmdb.org/t/p/original/";
 
-const Banner = ({ count }) => {
+const Banner = ({ filmsList }) => {
   const [movie, setMovie] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
@@ -71,10 +71,16 @@ const Banner = ({ count }) => {
           >
             Play
           </button>
-          <button className="banner__button">My List</button>
-          <button className="banner__button">
-            Films ajoutés à la liste : {count}
-          </button>
+          <select name="pets" id="pet-select" className="banner__button">
+            <option value="" disabled selected hidden>
+              My List
+            </option>
+            {filmsList.map((film) => (
+              <option value={film.id} key={film.id}>
+                {film}
+              </option>
+            ))}
+          </select>
         </div>
 
         <h1 className="banner__description">
@@ -110,7 +116,7 @@ const Banner = ({ count }) => {
 };
 
 const mapStateToProps = (state) => ({
-  count: state.count,
+  filmsList: state.filmsList || [],
 });
 
 export default connect(mapStateToProps)(Banner);

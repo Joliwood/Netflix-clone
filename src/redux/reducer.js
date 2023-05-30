@@ -1,15 +1,17 @@
 // Define the initial state
 const initialState = {
-  count: 0,
+  filmsList: [],
 };
 
 // Define the reducer
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case "ADD_FILM":
       return {
-        count: state.count + 1,
+        ...state,
+        filmsList: [...state.filmsList, action.payload],
       };
+
     default:
       return state;
   }

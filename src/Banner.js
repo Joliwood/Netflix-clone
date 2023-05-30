@@ -72,7 +72,7 @@ const Banner = ({ filmsList }) => {
             Play
           </button>
           <select name="pets" id="pet-select" className="banner__button">
-            <option value="" disabled selected hidden>
+            <option disabled selected hidden>
               My List
             </option>
             {filmsList.map((film) => (

@@ -39,7 +39,11 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   };
 
   const handleAddFilm = (movie) => {
-    addFilm(movie.title);
+    const isFilmInList = filmsList.some((item) => item === movie.title);
+
+    if (!isFilmInList) {
+      addFilm(movie.title);
+    }
   };
 
   return (

@@ -71,8 +71,13 @@ const Banner = ({ filmsList }) => {
           >
             Play
           </button>
-          <select name="pets" id="pet-select" className="banner__button">
-            <option disabled selected hidden>
+          <select
+            name="pets"
+            id="pet-select"
+            className="banner__button"
+            defaultValue="title"
+          >
+            <option disabled value="title" hidden>
               My List
             </option>
             {filmsList.map((film) => (

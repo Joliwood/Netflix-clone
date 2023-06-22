@@ -47,7 +47,7 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   };
 
   return (
-    <div className="row">
+    <div className="row" data-testid="rowComponent">
       <h2>{title}</h2>
 
       <div className="row__posters">
@@ -70,6 +70,7 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
             />
             <button
               onClick={() => handleAddFilm(movie)}
+              data-testid="addFilm"
               className="row__addList"
             >
               <img

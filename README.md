@@ -9,8 +9,7 @@
 
 <br />
 <p align=center>This website had been created to show skills in React, Axios for the requests, TMDB api to get all films. I also implemented Redux to share on all app all films we want to.</p>
-<p align=center>It had been created firstly with Clever Programmer, a youtube channel which help on clones.</p>
-<p align=center>All commits and update on the project after the 12/05/2022 are not anymore from the guides.</p>
+<p align=center>Some Jest test also have been added to the project to check all main functions & also redux.</p>
 <br />
 
 ---

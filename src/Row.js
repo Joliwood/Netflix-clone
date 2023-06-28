@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
-// import "./Row.css";
+import "./Row.css";
 import movieTrailer from "movie-trailer";
 import ReactPlayer from "react-player";
 import { addFilm } from "./redux/actions";

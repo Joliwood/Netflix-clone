@@ -1,23 +1,37 @@
 import React from "react";
 import "./App.css";
-import Row from "./Row";
+import Row from "./components/Row";
 import requests from "./requests";
-import Banner from "./Banner";
-import Nav from "./Nav";
+import Banner from "./components/Banner";
+import Nav from "./components/Nav";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient({});
+  const requestsList = [
+    {
+      title: "Trending Now",
+      fetchUrl: requests.fetchTopRated,
+      isLargeRow: true,
+    },
+    { title: "Top Rated", fetchUrl: requests.fetchTopRated },
+    { title: "Action Movies", fetchUrl: requests.fetchActionMovies },
+    { title: "Comedy Movies", fetchUrl: requests.fetchComedyMovies },
+    { title: "Horror Movies", fetchUrl: requests.fetchHorrorMovies },
+    { title: "Romance Movies", fetchUrl: requests.fetchRomanceMovies },
+    { title: "Documentaries", fetchUrl: requests.fetchDocumentaries },
+  ];
+
   return (
-    <div className="App">
-      <Nav />
-      <Banner />
-      <Row title="Trending Now" fetchUrl={requests.fetchTrending} isLargeRow />
-      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-      <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <Nav />
+        <Banner />
+        {requestsList.map((request, index) => (
+          <Row key={index} {...request} />
+        ))}
+      </div>
+    </QueryClientProvider>
   );
 }
 

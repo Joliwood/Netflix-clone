@@ -4,8 +4,7 @@ import configureStore from "redux-mock-store";
 import React from "react";
 import "@testing-library/jest-dom";
 
-import { shallow, mount, render } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import { shallow } from "enzyme";
 
 const mockStore = configureStore([]);
 const store = mockStore({ filmsList: [] });

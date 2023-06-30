@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "./axios";
+import React, { useState } from "react";
+import axios from "../axios";
 import "./Row.css";
 import movieTrailer from "movie-trailer";
 import ReactPlayer from "react-player";
-import { addFilm } from "./redux/actions";
+import { addFilm } from "../redux/actions";
 import { connect } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
 
-const base_url = "https://image.tmdb.org/t/p/original/";
+const base_url_image = "https://image.tmdb.org/t/p/original/";
 
 const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(fetchUrl);
+  const { error, isError } = useQuery({
+    queryKey: ["movies", fetchUrl, title],
+    queryFn: async ({ signal }) => {
+      const { data } = await axios.get(fetchUrl, signal);
+      setMovies(data.results);
 
-      setMovies(request.data.results);
-      return request;
-    }
-    fetchData();
-  }, [fetchUrl]);
+      return data;
+    },
+  });
+
+  if (isError | error) console.log("error", error);
 
   const handleClick = async (movie) => {
     if (trailerUrl) {
@@ -40,7 +43,7 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
 
   const handleAddFilm = (movie) => {
     const isFilmInList = filmsList.some((item) => item === movie.title);
-
+    console.log(movies);
     if (!isFilmInList) {
       addFilm(movie.title);
     }
@@ -63,7 +66,7 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
               className={`row__posterImg ${
                 isLargeRow && "row__posterImgLarge"
               }`}
-              src={`${base_url}${
+              src={`${base_url_image}${
                 isLargeRow ? movie.poster_path : movie.backdrop_path
               }`}
               alt={movie.name}

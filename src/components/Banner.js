@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "./axios";
-import requests from "./requests";
+import axios from "../axios";
+import requests from "../requests";
 import "./Banner.css";
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
@@ -80,8 +80,8 @@ const Banner = ({ filmsList }) => {
             <option disabled value="title" hidden>
               My List
             </option>
-            {filmsList.map((film) => (
-              <option value={film.id} key={film.id}>
+            {filmsList.map((film, index) => (
+              <option value={film.id} key={index}>
                 {film}
               </option>
             ))}

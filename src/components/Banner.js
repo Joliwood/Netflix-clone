@@ -5,6 +5,7 @@ import "./Banner.css";
 import ReactPlayer from "react-player";
 import movieTrailer from "movie-trailer";
 import { connect } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
 
 const posterUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -13,18 +14,20 @@ const Banner = ({ filmsList }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [trailerUrl, setTrailerUrl] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(requests.fetchTrending);
+  const request = requests.fetchTrending;
+
+  const { error, isError } = useQuery({
+    queryKey: [request],
+    queryFn: async () => {
+      const { data } = await axios.get(request);
       setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
+        data.results[Math.floor(Math.random() * data.results.length - 1)]
       );
-      return request;
-    }
-    fetchData();
-  }, []);
+      return data;
+    },
+  });
+
+  if (isError | error) console.log("eror", error);
 
   useEffect(() => {
     const overlay = document.getElementById("overlay");

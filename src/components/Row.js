@@ -15,16 +15,15 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { error, isError } = useQuery({
-    queryKey: ["movies", fetchUrl, title],
-    queryFn: async ({ signal }) => {
-      const { data } = await axios.get(fetchUrl, signal);
+    queryKey: [fetchUrl, title],
+    queryFn: async () => {
+      const { data } = await axios.get(fetchUrl);
       setMovies(data.results);
-
       return data;
     },
   });
 
-  if (isError | error) console.log("error", error);
+  if (isError | error) console.log("eror", error);
 
   const handleClick = async (movie) => {
     if (trailerUrl) {

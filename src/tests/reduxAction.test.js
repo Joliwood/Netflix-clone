@@ -1,4 +1,4 @@
-import { addFilm, ADD_FILM } from '../App/action';
+import { addFilm, ADD_FILM } from  "../redux/actions";
 
 describe('addFilm', () => {
   it('should create an action to add a film', () => {

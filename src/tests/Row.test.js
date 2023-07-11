@@ -4,9 +4,11 @@ import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import React from "react";
 import "@testing-library/jest-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const mockStore = configureStore([]);
 const store = mockStore({ filmsList: [] });
+const queryClient = new QueryClient();
 
 afterEach(() => {
   cleanup();
@@ -15,7 +17,9 @@ afterEach(() => {
 describe("Row component connected to Redux", () => {
   render(
     <Provider store={store}>
-      <Row />
+      <QueryClientProvider client={queryClient}>
+        <Row />
+      </QueryClientProvider>
     </Provider>
   );
   const rowComponent = screen.getByTestId("rowComponent");

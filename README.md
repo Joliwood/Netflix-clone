@@ -1,19 +1,20 @@
-<h1 align=center>Welcome to my Netflix clone</h1>
-<br />
+# Welcome to my Netflix clone
 
-<br />
-<p align=center ><img src="https://github.com/Joliwood/Netflix-clone/blob/374c55b499f9ded606d10550f6e22f2c7f5bcaea/netflix-clone.gif" /></p>
-<br />
+![Gif of presentation](https://github.com/Joliwood/Netflix-clone/blob/374c55b499f9ded606d10550f6e22f2c7f5bcaea/netflix-clone.gif)
 
----
+## Context
 
-<br />
-<p align=center>This website had been created to show skills in React, Axios for the requests, TMDB api to get all films. I also implemented Redux to share on all app all films we want to.</p>
-<p align=center>Some Jest test also have been added to the project to check all main functions & also redux.</p>
-<br />
+This website had been created to show skills in React, Axios for the requests, TMDB api to get all films. I also implemented Redux to share on all app all films we want to.
+Some Jest test also have been added to the project to check all main functions & also redux.
 
----
+## How to read commits in this project
 
-<br />
-<p align=center>You can check out the project at this link : https://gj-netlix-clone.netlify.app/</p>
-<p align=center>All the others projects can be visible here : <a href="https://backlist.onrender.com/" target="blank">https://github.com/Joliwood?tab=repositories</a></p>
+:zap: = Minor correction / debug \
+:construction: = Work in progress \
+:hammer: = New functionnality / component \
+:memo: = Readme / Code comments / Documentations \
+:sparkles: = Clean code
+
+## How to access to this project
+
+[Link to my portfolio website](https://gj-netlix-clone.netlify.app/)

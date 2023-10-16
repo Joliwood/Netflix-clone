@@ -6,7 +6,6 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@tanstack/react-query": "^4.29.19",
     "axios": "^0.26.1",
-    "eslint-config-react-app": "^7.0.1",
     "movie-trailer": "^3.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -21,12 +20,6 @@
     "start:build": "npx serve -s build",
     "build": "react-scripts build",
     "test": "jest --verbose"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [

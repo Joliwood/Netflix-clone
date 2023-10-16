@@ -7,7 +7,7 @@ const instance = axios.create({
 instance.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.error(error);
+    console.error("Request failed:", error);
     return Promise.reject(error);
   }
 );

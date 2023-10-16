@@ -60,3 +60,18 @@
 .row__addList:hover {
   cursor: pointer;
 }
+
+.row__trailer {
+  height: 480px !important;
+  width: calc(100% - 20px) !important;
+}
+
+@media screen  and (max-width: 768px) {
+ .row {
+  margin-left: 10px;
+ }  
+
+ .row__trailer {
+  width: calc(100% - 10px) !important;
+ }
+}

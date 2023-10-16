@@ -12,7 +12,6 @@ const base_url_image = "https://image.tmdb.org/t/p/original/";
 const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
 
   const { error, isError } = useQuery({
     queryKey: [fetchUrl, title],
@@ -28,13 +27,11 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
   const handleClick = async (movie) => {
     if (trailerUrl) {
       setTrailerUrl("");
-      setIsOpen(false);
     } else {
       movieTrailer(movie?.title || movie?.name || movie?.original_name)
         .then((url) => {
           const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
-          setIsOpen(true);
         })
         .catch((error) => console.log(error));
     }
@@ -42,7 +39,6 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
 
   const handleAddFilm = (movie) => {
     const isFilmInList = filmsList.some((item) => item === movie.title);
-    console.log(movies);
     if (!isFilmInList) {
       addFilm(movie.title);
     }
@@ -56,18 +52,15 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
         {movies.map((movie) => (
           <div
             key={movie.id}
-            className={`row__poster ${
-              isLargeRow && "row__posterLarge"
-            } row__posterContainer`}
+            className={`row__poster ${isLargeRow && "row__posterLarge"
+              } row__posterContainer`}
           >
             <img
               onClick={() => handleClick(movie)}
-              className={`row__posterImg ${
-                isLargeRow && "row__posterImgLarge"
-              }`}
-              src={`${base_url_image}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-              }`}
+              className={`row__posterImg ${isLargeRow && "row__posterImgLarge"
+                }`}
+              src={`${base_url_image}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
               alt={movie.name}
             />
             <button
@@ -83,12 +76,11 @@ const Row = ({ title, fetchUrl, isLargeRow, addFilm, filmsList }) => {
           </div>
         ))}
       </div>
-      {isOpen && trailerUrl && (
+      {trailerUrl && (
         <ReactPlayer
           playing
           url={`https://www.youtube.com/watch?v=${trailerUrl}`}
-          height="480px"
-          width="98.5%"
+          className="row__trailer"
         />
       )}
     </div>
